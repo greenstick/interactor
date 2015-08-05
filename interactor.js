@@ -30,14 +30,14 @@ Interactor.prototype = {
 
 	// Initialization
 	__init__: function (config) {
-		this.interactions 		= config.interactions 		|| true,
-		this.interactionElement = config.interactionElement || 'interaction',
-		this.interactionEvents 	= config.interactionEvents 	|| ['mouseup', 'touchend'],
-		this.conversions 		= config.coversions 		|| false,
-		this.conversionElement 	= config.conversionElement 	|| 'conversion',
-		this.conversionEvents 	= config.conversionEvents 	|| ['mouseup', 'touchend'],
-		this.endpoint 			= config.endpoint 			|| '/interactions',
-		this.records 			= [],
+		this.interactions 			= config.interactions 			|| true,
+		this.interactionElement 	= config.interactionElement 	|| 'interaction',
+		this.interactionEvents 		= config.interactionEvents 		|| ['mouseup', 'touchend'],
+		this.conversions 			= config.coversions 			|| false,
+		this.conversionElement 		= config.conversionElement 		|| 'conversion',
+		this.conversionEvents 		= config.conversionEvents 		|| ['mouseup', 'touchend'],
+		this.endpoint 				= config.endpoint 				|| '/interactions',
+		this.records 				= [];
 		this.__createEvents__();
 	},
 
