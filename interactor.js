@@ -22,11 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-var Interaction = function (config) {
+var Interactor = function (config) {
 	this.__init__(config);
 };
 
-Interaction.prototype = {
+Interactor.prototype = {
 
 	// Initialization
 	__init__: function (config) {
