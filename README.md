@@ -11,7 +11,6 @@ Contributions welcome!
 
 Include the script in your HTML and invoke it. 
 
-'''html
 	<!DOCTYPE html>
 	<html>
 		<head>
@@ -37,7 +36,6 @@ Include the script in your HTML and invoke it.
 			</script>
 		</body>
 	</html>
-'''
 
 To track a users interactions with an element, simply add the class '.interaction' class to the element!
 
@@ -46,10 +44,10 @@ Have a conversion point on your page? You can add that too with the '.conversion
 Want to track a user's interactions with different element classes already on your page? Create multiple instances and allow each to target the page elements you're interested in. 
 
 ## Default Parameters
-		interactions 		= true,
-		interactionElement 	='interaction',
-		interactionEvents 	= ['mouseup', 'touchend'],
-		conversions 		= false,
-		conversionElement 	= 'conversion',
-		conversionEvents 	= ['mouseup', 'touchend'],
-		endpoint 			= '/interactions',
+	interactions 		= true,
+	interactionElement 	='interaction',
+	interactionEvents 	= ['mouseup', 'touchend'],
+	conversions 		= false,
+	conversionElement 	= 'conversion',
+	conversionEvents 	= ['mouseup', 'touchend'],
+	endpoint 			= '/interactions',
