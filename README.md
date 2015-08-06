@@ -63,11 +63,36 @@ Include the script in your HTML and invoke it.
 		</body>
 	</html>
 
-To track a users interactions with an element, simply add the 'interaction' CSS class to the element!
+To track a users interactions with an element, simply add the 'interaction' CSS class to the element.
 
 Have a conversion point on your page? You can add that too, just add the 'conversion' CSS class to your conversion's HTML element. 
 
-Want to track a user's interactions and/or conversions with different element classes already on your page? Create multiple instances and allow each to target a specific element to track. No update to your HTML neccessary! 
+Want to track a user's interactions and/or conversions with different element classes already on your page? Create multiple instances and allow each to target a specific element to track. No update to your HTML neccessary!
+
+Example:
+
+	var elementsToTrack = [
+		{
+			element: "element1",
+			events : ["mouseup", "touchend"]
+		}, 
+		{
+			element: "element2",
+			events : ["mouseup"]
+		},
+		{ 
+			element: "element3",
+			events : ["mouseup"]
+		}
+	];
+
+	for (var i = 0; i < elementsToTrack.length; i++) {
+		var e = elementsToTrack[i];
+		new Interactor({
+			interactionElement 	: e.element,
+			interactionEvents 	: e.events
+		});
+	} 
 
 ## Default Parameters
 	interactions 		= true,
