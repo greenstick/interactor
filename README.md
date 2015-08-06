@@ -1,11 +1,37 @@
 # Interactor.js
-A simple, no dependency, website interaction tracker. 
+A simple, light-weight (3KB minified), no dependency, website interaction tracker. 
 
 Collects usage data and submits it to a user-defined server endpoint on the beforeunload event. 
 
 Great for creating a database to drive analytics and inform A/B testing and other site optimization decisions.
 
 Contributions welcome!
+
+## What Data is Provided?
+
+General Data:
+
+* Which page is loaded
+* When the user loaded the page
+* When the user left the page
+* The URL of the loaded page
+* The previous page location
+* The title of the page
+* The language settings of the user
+* The user's platform
+* The port used to access the web server
+* The inner and outer width and height of the web browser
+
+Interaction / Conversion Data: 
+
+* The interaction type (i.e. general interaction or conversion)
+* The time of the interaction
+* The event that triggered interaction
+* The target HTML element tag
+* The target HTML element classes
+* The target HTML element content (i.e. text, etc.)
+* The cursor position relative to client
+* The cursor position relative to screen
 
 ## Example Usage
 

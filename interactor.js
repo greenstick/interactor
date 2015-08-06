@@ -38,6 +38,7 @@ Interactor.prototype = {
 		this.conversionEvents 		= config.conversionEvents 		|| ['mouseup', 'touchend'],
 		this.endpoint 				= config.endpoint 				|| '/interactions',
 		this.records 				= [];
+		this.loadTime 				= new Date();
 		this.__createEvents__();
 	},
 
@@ -96,7 +97,7 @@ Interactor.prototype = {
 					x 				: e.screenX,
 					y 				: e.screenY
 				},
-				createdAt 		: new Date
+				createdAt 		: new Date()
 			};
 		Interaction.records.push(interaction);
 		return this.interactions;
@@ -106,6 +107,8 @@ Interactor.prototype = {
 	__sendInteractions__: function () {
 		var Interaction 	= this,
 			data 			= {
+				loadTime 		: Interaction.loadTime,
+				unloadTime 		: new Date(),
 				language 		: window.navigator.language,
 				platform 		: window.navigator.platform,
 				port 			: window.location.port,
