@@ -50,7 +50,7 @@ Include the script in your HTML and invoke it.
 			<script src="interactor.min.js" type="application/javascript"></script>
 			<script>
 				// An example instantiation with custom arguments
-				var interactions = new Interaction({
+				var interactions = new Interactor({
 					interactions 		: true,
 					interactionElement 	: "interaction",
 					interactionEvents 	: ["mousedown", "mouseup", "touchstart", "touchend"],
