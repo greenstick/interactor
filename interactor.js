@@ -128,7 +128,7 @@ Interactor.prototype = {
 				interactions 	: Interaction.records
 			},
 			ajax  			= new XMLHttpRequest();
-		ajax.open('POST', Interaction.endpoint, false);
+		ajax.open('POST', Interaction.endpoint, true);
 		ajax.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 		ajax.send(JSON.stringify(data));
 	}
