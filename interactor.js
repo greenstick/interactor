@@ -30,6 +30,7 @@ Interactor.prototype = {
 
 	// Initialization
 	__init__: function (config) {
+		
 		// Argument Assignment / Sanity Checks
 		this.interactions 		= typeof(config.interactions) 				== "boolean" 	? config.interations 		: true,
 		this.interactionElement = typeof(config.interactionElement) 		== "string" 	? config.interactionElement :'interaction',
@@ -41,15 +42,19 @@ Interactor.prototype = {
 		this.async 				= typeof(config.async) 						== "boolean" 	? config.async 				: true,
 		this.records 			= [];
 		this.loadTime 			= new Date();
-		// Bind Events
+		
+		// Call Event Binding Method
 		this.__bindEvents__();
+		
+		return this;
 	},
 
 	// Create Events to Track
 	__bindEvents__: function () {
+		
 		var interactor 	= this;
 
-		// Set interactor Capture
+		// Set Interaction Capture
 		if (interactor.interactions === true) {
 			for (var i = 0; i < interactor.interactionEvents.length; i++) {
 				var ev 		= interactor.interactionEvents[i],
@@ -81,11 +86,13 @@ Interactor.prototype = {
 		window.onbeforeunload = function (e) {
 			interactor.__sendInteractions__();
 		};
+		
 		return this;
 	},
 
-	// Add interactor Triggered By Events
+	// Add Interaction Triggered By Events
 	__addInteraction__: function (e, type) {
+		
 		var interactor 	= this,
 			interaction 	= {
 				type 			: type,
@@ -103,13 +110,18 @@ Interactor.prototype = {
 				},
 				createdAt 		: new Date()
 			};
+		
+		// Insert Interaction Object into Records Array
 		interactor.records.push(interaction);
+		
 		return this;
 	},
 
-	// Gather additional data and send interaction(s) to server
+	// Gather Additional Data and Send Interaction(s) to Server
 	__sendInteractions__: function () {
+		
 		var interactor 	= this,
+		
 			data 			= {
 				loadTime 		: interactor.loadTime,
 				unloadTime 		: new Date(),
@@ -132,8 +144,11 @@ Interactor.prototype = {
 				interactions 	: interactor.records
 			},
 			ajax  			= new XMLHttpRequest();
+			
+		// Send Post Request
 		ajax.open('POST', interactor.endpoint, interactor.async);
 		ajax.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 		ajax.send(JSON.stringify(data));
 	}
+	
 };
