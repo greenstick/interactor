@@ -30,45 +30,48 @@ Interactor.prototype = {
 
 	// Initialization
 	__init__: function (config) {
-		this.interactions 			= config.interactions 			|| true,
-		this.interactionElement 	= config.interactionElement 	|| 'interaction',
-		this.interactionEvents 		= config.interactionEvents 		|| ['mouseup', 'touchend'],
-		this.conversions 			= config.coversions 			|| false,
-		this.conversionElement 		= config.conversionElement 		|| 'conversion',
-		this.conversionEvents 		= config.conversionEvents 		|| ['mouseup', 'touchend'],
-		this.endpoint 				= config.endpoint 				|| '/interactions',
-		this.records 				= [];
-		this.loadTime 				= new Date();
-		this.__createEvents__();
+		// Argument Assignment / Sanity Checks
+		this.interactions 		= typeof(config.interactions) 				== "boolean" 	? config.interations 		: true,
+		this.interactionElement = typeof(config.interactionElement) 		== "string" 	? config.interactionElement :'interaction',
+		this.interactionEvents 	= Array.isArray(config.interactionEvents) 	== true 		? config.interactionEvents 	: ['mouseup', 'touchend'],
+		this.conversions 		= typeof(config.coversions)					== "boolean" 	? config.conversions		: false,
+		this.conversionElement 	= typeof(config.conversionElement) 			== "string" 	? config.conversionElement 	: 'conversion',
+		this.conversionEvents 	= Array.isArray(config.conversionEvents) 	== true 		? config.conversionEvents 	: ['mouseup', 'touchend'],
+		this.endpoint 			= typeof(config.endpoint) 					== "string" 	? config.endpoint 			: '/interactions',
+		this.async 				= typeof(config.async) 						== "boolean" 	? config.async 				: true,
+		this.records 			= [];
+		this.loadTime 			= new Date();
+		// Bind Events
+		this.__bindEvents__();
 	},
 
 	// Create Events to Track
-	__createEvents__: function () {
-		var Interaction 	= this;
+	__bindEvents__: function () {
+		var interactor 	= this;
 
-		// Set Interaction Capture
-		if (Interaction.interactions === true) {
-			for (var i = 0; i < Interaction.interactionEvents.length; i++) {
-				var ev 		= Interaction.interactionEvents[i],
-					targets = document.getElementsByClassName(Interaction.interactionElement);
+		// Set interactor Capture
+		if (interactor.interactions === true) {
+			for (var i = 0; i < interactor.interactionEvents.length; i++) {
+				var ev 		= interactor.interactionEvents[i],
+					targets = document.getElementsByClassName(interactor.interactionElement);
 				for (var j = 0; j < targets.length; j++) {
 					targets[j].addEventListener(ev, function (e) {
 						e.stopPropagation();
-						Interaction.__addInteraction__(e, "interaction");
+						interactor.__addInteraction__(e, "interaction");
 					});
 				}
 			}	
 		}
 
 		// Set Conversion Capture
-		if (Interaction.conversions === true) {
-			for (var i = 0; i < Interaction.conversionEvents.length; i++) {
-				var ev 		= Interaction.events[i],
-					targets = document.getElementsByClassName(Interaction.conversionElement);
+		if (interactor.conversions === true) {
+			for (var i = 0; i < interactor.conversionEvents.length; i++) {
+				var ev 		= interactor.events[i],
+					targets = document.getElementsByClassName(interactor.conversionElement);
 				for (var j = 0; j < targets.length; j++) {
 					targets[j].addEventListener(ev, function (e) {
 						e.stopPropagation();
-						Interaction.__addInteraction__(e, "conversion");
+						interactor.__addInteraction__(e, "conversion");
 					});
 				}
 			}	
@@ -76,13 +79,14 @@ Interactor.prototype = {
 
 		// Bind onbeforeunload Event
 		window.onbeforeunload = function (e) {
-			Interaction.__sendInteractions__();
+			interactor.__sendInteractions__();
 		};
+		return this;
 	},
 
-	// Add Interaction Triggered By Events
+	// Add interactor Triggered By Events
 	__addInteraction__: function (e, type) {
-		var Interaction 	= this,
+		var interactor 	= this,
 			interaction 	= {
 				type 			: type,
 				event 			: e.type,
@@ -99,15 +103,15 @@ Interactor.prototype = {
 				},
 				createdAt 		: new Date()
 			};
-		Interaction.records.push(interaction);
-		return this.interactions;
+		interactor.records.push(interaction);
+		return this;
 	},
 
 	// Gather additional data and send interaction(s) to server
 	__sendInteractions__: function () {
-		var Interaction 	= this,
+		var interactor 	= this,
 			data 			= {
-				loadTime 		: Interaction.loadTime,
+				loadTime 		: interactor.loadTime,
 				unloadTime 		: new Date(),
 				language 		: window.navigator.language,
 				platform 		: window.navigator.platform,
@@ -125,10 +129,10 @@ Interactor.prototype = {
 					origin 			: window.location.origin,
 					title 			: document.title
 				},
-				interactions 	: Interaction.records
+				interactions 	: interactor.records
 			},
 			ajax  			= new XMLHttpRequest();
-		ajax.open('POST', Interaction.endpoint, true);
+		ajax.open('POST', interactor.endpoint, interactor.async);
 		ajax.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 		ajax.send(JSON.stringify(data));
 	}
