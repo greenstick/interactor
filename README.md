@@ -3,7 +3,7 @@ A simple, light-weight (3KB minified), no dependency, front-end website interact
 
 Collects usage data and submits it to a user-defined server endpoint on the beforeunload event. 
 
-Great for creating a database to drive analytics and inform A/B testing and other site optimization decisions.
+Great for creating a database to drive analytics, inform A/B testing, and guide other site optimization decisions.
 
 This data can help you analyze:
 * How your users navigate your website
@@ -63,7 +63,8 @@ Include the script in your HTML and invoke it.
 					conversions 		: true,
 					conversionElement 	: "conversion",
 					conversionEvents 	: ["mouseup", "touchend"],
-					endpoint 			: '/usage/interactions'
+					endpoint 			: '/usage/interactions',
+					async 				: true
 				});
 			</script>
 		</body>
@@ -108,3 +109,4 @@ Example:
 	conversionElement 	= 'conversion',
 	conversionEvents 	= ['mouseup', 'touchend'],
 	endpoint 			= '/interactions',
+	async 				= true
