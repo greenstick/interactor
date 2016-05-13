@@ -33,10 +33,10 @@ Interactor.prototype = {
 		// Argument Assignment / Sanity Checks
 		this.interactions 		= typeof(config.interactions) 				== "boolean" 	? config.interations 		: true,
 		this.interactionElement = typeof(config.interactionElement) 		== "string" 	? config.interactionElement :'interaction',
-		this.interactionEvents 	= Array.isArray(config.interactionEvents) 	== true 		? config.interactionEvents 	: ['mouseup', 'touchend'],
+		this.interactionEvents 	= Array.isArray(config.interactionEvents) 	=== true 		? config.interactionEvents 	: ['mouseup', 'touchend'],
 		this.conversions 		= typeof(config.coversions)					== "boolean" 	? config.conversions		: false,
 		this.conversionElement 	= typeof(config.conversionElement) 			== "string" 	? config.conversionElement 	: 'conversion',
-		this.conversionEvents 	= Array.isArray(config.conversionEvents) 	== true 		? config.conversionEvents 	: ['mouseup', 'touchend'],
+		this.conversionEvents 	= Array.isArray(config.conversionEvents) 	=== true 		? config.conversionEvents 	: ['mouseup', 'touchend'],
 		this.endpoint 			= typeof(config.endpoint) 					== "string" 	? config.endpoint 			: '/interactions',
 		this.async 				= typeof(config.async) 						== "boolean" 	? config.async 				: true,
 		this.records 			= [];
@@ -131,9 +131,9 @@ Interactor.prototype = {
 				},
 				interactions 	: interactor.records
 			},
-			ajax  			= new XMLHttpRequest();
-		ajax.open('POST', interactor.endpoint, interactor.async);
-		ajax.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-		ajax.send(JSON.stringify(data));
+			xhr  			= new XMLHttpRequest();
+		xhr.open('POST', interactor.endpoint, interactor.async);
+		xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		xhr.send(JSON.stringify(data));
 	}
 };
