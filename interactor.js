@@ -23,6 +23,7 @@ THE SOFTWARE.
 */
 
 var Interactor = function (config) {
+	// Call Initialization on Interactor Call
 	this.__init__(config);
 };
 
@@ -31,7 +32,7 @@ Interactor.prototype = {
 	// Initialization
 	__init__: function (config) {
 		
-		// Argument Assignment / Sanity Checks
+		// Argument Assignment  // Type Checks 																			// Default Values
 		this.interactions 		= typeof(config.interactions) 				== "boolean" 	? config.interations 		: true,
 		this.interactionElement = typeof(config.interactionElement) 		== "string" 	? config.interactionElement :'interaction',
 		this.interactionEvents 	= Array.isArray(config.interactionEvents) 	=== true 		? config.interactionEvents 	: ['mouseup', 'touchend'],
@@ -90,10 +91,12 @@ Interactor.prototype = {
 		return this;
 	},
 
-	// Add Interaction Triggered By Events
+	// Add Interaction Object Triggered By Events to Records Array
 	__addInteraction__: function (e, type) {
 		
 		var interactor 	= this,
+
+			// Interaction Object
 			interaction 	= {
 				type 			: type,
 				event 			: e.type,
@@ -111,7 +114,7 @@ Interactor.prototype = {
 				createdAt 		: new Date()
 			};
 		
-		// Insert Interaction Object into Records Array
+		// Insert into Records Array
 		interactor.records.push(interaction);
 		
 		return this;
@@ -121,8 +124,9 @@ Interactor.prototype = {
 	__sendInteractions__: function () {
 		
 		var interactor 	= this,
-		
-			data 			= {
+			
+			// Generate Session Data Object
+			session 		= {
 				loadTime 		: interactor.loadTime,
 				unloadTime 		: new Date(),
 				language 		: window.navigator.language,
@@ -143,9 +147,15 @@ Interactor.prototype = {
 				},
 				interactions 	: interactor.records
 			},
+
+			// Initialize Cross Header Request
 			xhr  			= new XMLHttpRequest();
+
+		// Post Session Data Serialized as JSON
 		xhr.open('POST', interactor.endpoint, interactor.async);
 		xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-		xhr.send(JSON.stringify(data));
+		xhr.send(JSON.stringify(session));
+
+		return this;
 	}
 };
