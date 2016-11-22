@@ -57,14 +57,15 @@ Include the script in your HTML and invoke it.
 			<script>
 				// An example instantiation with custom arguments
 				var interactions = new Interactor({
-					interactions 		: true,
-					interactionElement 	: "interaction",
-					interactionEvents 	: ["mousedown", "mouseup", "touchstart", "touchend"],
-					conversions 		: true,
-					conversionElement 	: "conversion",
-					conversionEvents 	: ["mouseup", "touchend"],
-					endpoint 			: '/usage/interactions',
-					async 				: true
+					interactions            : true,
+					interactionElement      : "interaction",
+					interactionEvents       : ["mousedown", "mouseup", "touchstart", "touchend"],
+					conversions             : true,
+					conversionElement       : "conversion",
+					conversionEvents        : ["mouseup", "touchend"],
+					endpoint                : '/usage/interactions',
+					async                   : true,
+					debug                   : false
 				});
 			</script>
 		</body>
@@ -102,11 +103,14 @@ Example:
 	} 
 
 ## Default Parameters
-	interactions 		= true,
-	interactionElement 	='interaction',
-	interactionEvents 	= ['mouseup', 'touchend'],
-	conversions 		= false,
-	conversionElement 	= 'conversion',
-	conversionEvents 	= ['mouseup', 'touchend'],
-	endpoint 			= '/interactions',
-	async 				= true
+	{
+		interactions            : true,
+		interactionElement      : 'interaction',
+		interactionEvents       : ['mouseup', 'touchend'],
+		conversions             : false,
+		conversionElement       : 'conversion',
+		conversionEvents        : ['mouseup', 'touchend'],
+		endpoint                : '/interactions',
+		async                   : true,
+		debug                   : true
+	}
