@@ -1,5 +1,5 @@
 # Interactor.js
-A simple, light-weight (3KB minified), no dependency, front-end website interaction tracker. 
+A simple, light-weight (< 5KB minified), no dependency, front-end website interaction tracker. 
 
 Collects usage data and submits it to a user-defined server endpoint on the beforeunload event. 
 
@@ -10,8 +10,6 @@ This data can help you analyze:
 * Engagement levels on a per-page and site-wide basis
 * What platforms, language settings, and browser dimensions your users have
 * Bounce rates, page and site bottle-necks, impressions, and conversions
-
-Contributions welcome!
 
 ## What Data is Provided?
 
@@ -57,14 +55,15 @@ Include the script in your HTML and invoke it.
 			<script>
 				// An example instantiation with custom arguments
 				var interactions = new Interactor({
-					interactions 		: true,
-					interactionElement 	: "interaction",
-					interactionEvents 	: ["mousedown", "mouseup", "touchstart", "touchend"],
-					conversions 		: true,
-					conversionElement 	: "conversion",
-					conversionEvents 	: ["mouseup", "touchend"],
-					endpoint 			: '/usage/interactions',
-					async 				: true
+					interactions            : true,
+					interactionElement      : "interaction",
+					interactionEvents       : ["mousedown", "mouseup", "touchstart", "touchend"],
+					conversions             : true,
+					conversionElement       : "conversion",
+					conversionEvents        : ["mouseup", "touchend"],
+					endpoint                : '/usage/interactions',
+					async                   : true,
+					debug                   : false
 				});
 			</script>
 		</body>
@@ -102,11 +101,19 @@ Example:
 	} 
 
 ## Default Parameters
-	interactions 		= true,
-	interactionElement 	='interaction',
-	interactionEvents 	= ['mouseup', 'touchend'],
-	conversions 		= false,
-	conversionElement 	= 'conversion',
-	conversionEvents 	= ['mouseup', 'touchend'],
-	endpoint 			= '/interactions',
-	async 				= true
+	{
+		interactions            : true,
+		interactionElement      : 'interaction',
+		interactionEvents       : ['mouseup', 'touchend'],
+		conversions             : false,
+		conversionElement       : 'conversion',
+		conversionEvents        : ['mouseup', 'touchend'],
+		endpoint                : '/interactions',
+		async                   : true,
+		debug                   : true
+	}
+
+## Contributing
+Contributions are welcome!
+
+Next up: addition of Web Socket mode. 

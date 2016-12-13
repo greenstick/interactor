@@ -38,7 +38,7 @@ Interactor.prototype = {
 
         var interactor = this;
         
-        // Argument Assignment  // Type Checks                                                                          // Default Values
+        // Argument Assignment          // Type Checks                                                                          // Default Values
         interactor.interactions       = typeof(config.interactions)               == "boolean"    ? config.interations        : true,
         interactor.interactionElement = typeof(config.interactionElement)         == "string"     ? config.interactionElement :'interaction',
         interactor.interactionEvents  = Array.isArray(config.interactionEvents)   === true        ? config.interactionEvents  : ['mouseup', 'touchend'],
