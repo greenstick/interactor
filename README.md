@@ -11,6 +11,9 @@ This data can help you analyze:
 * What platforms, language settings, and browser dimensions your users have
 * Bounce rates, page and site bottle-necks, impressions, and conversions
 
+## Documentation
+Documentation is currently being written. To seen an example, make a local copy of the repository with `git clone https://github.com/greenstick/interactor.git`, navigate to the `example` folder, and open up `index.html`. Clicking on interaction and conversion elements will log the `session` object along with conversions and interactions to your browsers console. 
+
 ## What Data is Provided?
 
 General Data:

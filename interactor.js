@@ -39,10 +39,10 @@ Interactor.prototype = {
         var interactor = this;
         
         // Argument Assignment          // Type Checks                                                                          // Default Values
-        interactor.interactions       = typeof(config.interactions)               == "boolean"    ? config.interations        : true,
+        interactor.interactions       = typeof(config.interactions)               == "boolean"    ? config.interactions        : true,
         interactor.interactionElement = typeof(config.interactionElement)         == "string"     ? config.interactionElement :'interaction',
         interactor.interactionEvents  = Array.isArray(config.interactionEvents)   === true        ? config.interactionEvents  : ['mouseup', 'touchend'],
-        interactor.conversions        = typeof(config.coversions)                 == "boolean"    ? config.conversions        : false,
+        interactor.conversions        = typeof(config.conversions)                == "boolean"    ? config.conversions        : true,
         interactor.conversionElement  = typeof(config.conversionElement)          == "string"     ? config.conversionElement  : 'conversion',
         interactor.conversionEvents   = Array.isArray(config.conversionEvents)    === true        ? config.conversionEvents   : ['mouseup', 'touchend'],
         interactor.endpoint           = typeof(config.endpoint)                   == "string"     ? config.endpoint           : '/interactions',
@@ -82,7 +82,7 @@ Interactor.prototype = {
         // Set Conversion Capture
         if (interactor.conversions === true) {
             for (var i = 0; i < interactor.conversionEvents.length; i++) {
-                var ev      = interactor.events[i],
+                var ev      = interactor.conversionEvents[i],
                     targets = document.getElementsByClassName(interactor.conversionElement);
                 for (var j = 0; j < targets.length; j++) {
                     targets[j].addEventListener(ev, function (e) {
@@ -161,7 +161,7 @@ Interactor.prototype = {
                 origin          : window.location.origin,
                 title           : document.title
             },
-            endoint        : interactor.endpoint
+            endpoint        : interactor.endpoint
         };
 
         return interactor;
