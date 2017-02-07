@@ -12,7 +12,7 @@ This data can help you analyze:
 * Bounce rates, page and site bottle-necks, impressions, and conversions
 
 ## Documentation
-Documentation is currently being written. To seen an example, make a local copy of the repository with `git clone https://github.com/greenstick/interactor.git`, navigate to the `example` folder, and open up `index.html`. Clicking on interaction and conversion elements will log the `session` object along with conversions and interactions to your browsers console. 
+Documentation is currently being written. There's a working (front-end) [example of Interactor](http://greenstick.github.io/interactor/). To explore it, open up your browsers' console and click on the interaction and conversion buttons.
 
 ## What Data is Provided?
 
