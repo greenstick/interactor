@@ -14,6 +14,8 @@ This data can help you analyze:
 ## Documentation
 Documentation is currently being written. There's a working (front-end) [example of Interactor](http://greenstick.github.io/interactor/). To explore it, open up your browsers' console and click on the interaction and conversion buttons.
 
+Interactor currently supports modern browsers: Chrome, Firefox, & Safari. Additional testing & input is welcome.
+
 ## What Data is Provided?
 
 General Data:
