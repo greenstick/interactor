@@ -36,7 +36,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 color: rgba(11, 14, 23, 0.8);
             }
             #wrapper {
-                width: 80%;
+                width: 90%;
                 margin: 0 auto;
             }
             .title {
@@ -76,19 +76,20 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             }
             .history {
                 float: left;
-                width: 560px;
+                width: 580px;
                 height: 632px;
+                overflow: hidden;
             }
             .history-data {
                 float: left;
-                width: 560px;
+                width: 580px;
                 height: 632px;
                 overflow-y: auto;
                 overflow-x: hidden;
                 display: none;
             }
             .history .interaction, .history .conversion {
-                width: 536px;
+                width: 556px;
                 height: 96px;
                 padding: 8px;
             }
@@ -100,13 +101,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             }
             .session {
                 float: left;
-                width: 320px;
+                width: 480px;
                 height: 632px;
                 margin-right: 20px;
             }
             .session-data {
                 height: 564px;
-                width: 280px;
+                width: 440px;
                 padding: 20px;
                 background-color: rgba(231, 109, 238, .6);
             }
@@ -147,9 +148,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     <div class="platform">
                         <span style="font-weight: bold;">Platform:</span> <span data-bind="text: platform"></span>
                     </div>
-                    <div class="port">
-                        <span style="font-weight: bold;">Port:</span> <span data-bind="text: port"></span>
-                    </div>
                     <div class="clientstart.name">
                         <span style="font-weight: bold;">Client Name on Load:</span> <span data-bind="text: clientStart.name"></span>
                     </div>
@@ -168,8 +166,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     <div class="loadTime">
                         <span style="font-weight: bold;">Load Time:</span> <span data-bind="text: loadTime"></span>
                     </div>
+
                     <div class="unloadTime">
-                        <span style="font-weight: bold;">Unload Time:</span> <span data-bind="text: unloadTime"></span>
+                        <span style="font-weight: bold;">Unload Time:</span> <span data-bind="text: unloadTime"></span>*
+                    </div>
+                    <div class="clientend.innerWidth">
+                        <span style="font-weight: bold;">Client Inner Width on Unload:</span> <span data-bind="text: clientEnd.innerWidth"></span>*
+                    </div>
+                    <div class="clientend.innerHeight">
+                        <span style="font-weight: bold;">Client Inner Height on Unload:</span> <span data-bind="text: clientEnd.innerHeight"></span>*
+                    </div>
+                    <div class="clientend.outerWidth">
+                        <span style="font-weight: bold;">Client Outer Width on Unload:</span> <span data-bind="text: clientEnd.outerWidth"></span>*
+                    </div>
+                    <div class="clientend.outerHeight">
+                        <span style="font-weight: bold;">Client Outer Height on Unload:</span> <span data-bind="text: clientEnd.outerHeight"></span>*
                     </div>
                 </div>
             </div>
@@ -218,6 +229,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     </div>
                 </div>
             </div>
+            <h3>*Unload Session Data Simulated on Each Interaction</h3>
         </div>
         <!-- Include Knockout.js & Mapping Plugin -->
         <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
