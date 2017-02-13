@@ -337,15 +337,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 }
             }
 
+            // Map ViewModel
             var viewmodel = ko.mapping.fromJS(model, mapping);
-            ko.applyBindings(viewmodel);
+
+            // Apply Bindings
+            ko.applyBindings(viewmodel, document.getElementById("wrapper"));
+
+            // Init Session Data
+            ko.mapping.fromJS(interactor.session, viewmodel);
 
             // Update View Model on Button Click
+            var historydata = document.querySelector(".history-data");
             for(var i = 0; i < buttons.length; i++) {
                 buttons[i].addEventListener("click", function (e) {
                     ko.mapping.fromJS(interactor.session, viewmodel);
-                    var history = document.querySelector(".history-data");
-                    history.style.display = "block";
+                    historydata.style.display = "block";
                 });
             }
 
