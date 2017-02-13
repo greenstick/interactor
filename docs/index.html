@@ -29,6 +29,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Interactor Example</title>
         <style>
             html {
                 font-family: helvetica, arial, sans-serif;
@@ -42,26 +43,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 width: 120px;
                 height: 28px;
                 line-height: 28px;
-                font-size: 24px
+                font-size: 24px;
             }
             .actions {
-                width: 540px;
-                height: 640px;
                 float: left;
+                width: 140px;
+                height: 632px;
                 margin-right: 32px;
             }
             .interactions, .conversions {
                 float: left;
-                display: block;
-                width: 540px;
+                width: 140px;
                 height: 320px;
             }
             .interaction-buttons, .conversion-buttons, .interaction-data, .conversion-data {
                 float: left;
-                display: block;
             }
             .interaction, .conversion {
-                width: 80px;
+                width: 142px;
                 height: 32px;
                 margin-bottom: 10px;
                 margin-right: 10px;
@@ -75,26 +74,46 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             .conversion {
                 background-color: rgba(124, 241, 193, 1);
             }
-            .interaction-data, .conversion-data {
-                width: 440px;
-                height: 284px;
+            .history {
                 float: left;
+                width: 560px;
+                height: 632px;
             }
-            .interaction-data {
+            .history-data {
+                float: left;
+                width: 560px;
+                height: 632px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                display: none;
+            }
+            .history .interaction, .history .conversion {
+                width: 536px;
+                height: 96px;
+                padding: 8px;
+            }
+            .history .interaction {
                 background-color: rgba(119, 202, 248, .6)
             }
-            .conversion-data {
+            .history .conversion {
                 background-color: rgba(124, 241, 193, .6);
             }
             .session {
                 float: left;
-                width: 540px;
-                height: 620px;
+                width: 320px;
+                height: 632px;
+                margin-right: 20px;
             }
             .session-data {
-                height: 604px;
-                width: 540px;
+                height: 564px;
+                width: 280px;
+                padding: 20px;
                 background-color: rgba(231, 109, 238, .6);
+            }
+            .session-data div {
+                line-height: 26px;
+                text-overflow: ellipsis;
+                overfolow: hidden;
             }
         </style>
 
@@ -105,6 +124,55 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 <h1>Interactor Example</h1>
                 <h3>Open Your Browser Console to See An Example of The Data Being Collected by Interactor</h3>
             </header>
+            <div class="session">
+                <div class="title">
+                    Session
+                </div>
+                <div class="session-data">
+                    <div class="page.title">
+                        <span style="font-weight: bold;">Page Title:</span> <span data-bind="text: page.title"></span>
+                    </div>
+                    <div class="page.origin">
+                        <span style="font-weight: bold;">Page Origin:</span> <span data-bind="text: page.origin"></span>
+                    </div>
+                    <div class="page.location">
+                        <span style="font-weight: bold;">Page Location:</span> <span data-bind="text: page.location"></span>
+                    </div>
+                    <div class="page.href">
+                        <span style="font-weight: bold;">Page HREF:</span> <span data-bind="text: page.href"></span>
+                    </div>
+                    <div class="language">
+                        <span style="font-weight: bold;">Language:</span> <span data-bind="text: language"></span>
+                    </div>
+                    <div class="platform">
+                        <span style="font-weight: bold;">Platform:</span> <span data-bind="text: platform"></span>
+                    </div>
+                    <div class="port">
+                        <span style="font-weight: bold;">Port:</span> <span data-bind="text: port"></span>
+                    </div>
+                    <div class="clientstart.name">
+                        <span style="font-weight: bold;">Client Name on Load:</span> <span data-bind="text: clientStart.name"></span>
+                    </div>
+                    <div class="clientstart.innerWidth">
+                        <span style="font-weight: bold;">Client Inner Width on Load:</span> <span data-bind="text: clientStart.innerWidth"></span>
+                    </div>
+                    <div class="clientstart.innerHeight">
+                        <span style="font-weight: bold;">Client Inner Height on Load:</span> <span data-bind="text: clientStart.innerHeight"></span>
+                    </div>
+                    <div class="clientstart.outerWidth">
+                        <span style="font-weight: bold;">Client Outer Width on Load:</span> <span data-bind="text: clientStart.outerWidth"></span>
+                    </div>
+                    <div class="clientstart.outerHeight">
+                        <span style="font-weight: bold;">Client Outer Height on Load:</span> <span data-bind="text: clientStart.outerHeight"></span>
+                    </div>
+                    <div class="loadTime">
+                        <span style="font-weight: bold;">Load Time:</span> <span data-bind="text: loadTime"></span>
+                    </div>
+                    <div class="unloadTime">
+                        <span style="font-weight: bold;">Unload Time:</span> <span data-bind="text: unloadTime"></span>
+                    </div>
+                </div>
+            </div>
             <div class="actions">
                 <div class="interactions">
                     <div class="title">
@@ -118,18 +186,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                         <div class="interaction">Roar</div>
                         <div class="interaction">Screech</div>
                         <div class="interaction">Woof</div>
-                    </div>
-                    <div class="interaction-data">
-                        <div class="type"></div>
-                        <div class="event"></div>
-                        <div class="targetTag"></div>
-                        <div class="targetClasses"></div>
-                        <div class="content"></div>
-                        <div class="clientX"></div>
-                        <div class="clientY"></div>
-                        <div class="screenX"></div>
-                        <div class="screenY"></div>
-                        <div class="datetime"></div>
                     </div>
                 </div>
                 <div class="conversions">
@@ -145,44 +201,142 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                         <div class="conversion">Hooray</div>
                         <div class="conversion">Woot</div>
                     </div>
-                    <div class="conversion-data">
-                        <div class="type"></div>
-                        <div class="event"></div>
-                        <div class="targetTag"></div>
-                        <div class="targetClasses"></div>
-                        <div class="content"></div>
-                        <div class="clientX"></div>
-                        <div class="clientY"></div>
-                        <div class="screenX"></div>
-                        <div class="screenY"></div>
-                        <div class="datetime"></div>
+                </div>
+            </div>
+            <div class="history">
+                <div class="title">
+                    History
+                </div>
+                <div class="history-data" data-bind="foreach: interactions.slice(0).reverse()">
+                    <div class="record" data-bind="css: type">
+                        <span style="font-weight: bold;">Type:</span> <span data-bind="text: type"></span>
+                        <span style="font-weight: bold;">Event:</span> <span data-bind="text: event"></span>
+                        <span style="font-weight: bold;">Target Tag:</span> <span data-bind="text: targetTag"></span><br />
+                        <span style="font-weight: bold;">Target Class(es):</span> <span data-bind="text: targetClasses"></span>
+                        <span style="font-weight: bold;">Content:</span> <span data-bind="text: content"></span><br />
+                        <span style="font-weight: bold;">Datetime:</span> <span data-bind="text: createdAt"></span>
                     </div>
                 </div>
             </div>
-            <div class="session">
-                <div class="title">
-                    Session
-                </div>
-                <div class="session-data">
-
-                </div>
-            </div>
         </div>
+        <!-- Include Knockout.js & Mapping Plugin -->
+        <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+        <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
+        <!-- Include interactor.min.js -->
+        <script type="application/javascript">
+            var Interactor=function(a){this.__init__(a)};Interactor.prototype={__init__:function(a){var b=this;return b.interactions="boolean"!=typeof a.interactions||a.interactions,b.interactionElement="string"==typeof a.interactionElement?a.interactionElement:"interaction",b.interactionEvents=Array.isArray(a.interactionEvents)===!0?a.interactionEvents:["mouseup","touchend"],b.conversions="boolean"!=typeof a.conversions||a.conversions,b.conversionElement="string"==typeof a.conversionElement?a.conversionElement:"conversion",b.conversionEvents=Array.isArray(a.conversionEvents)===!0?a.conversionEvents:["mouseup","touchend"],b.endpoint="string"==typeof a.endpoint?a.endpoint:"/interactions",b.async="boolean"!=typeof a.async||a.async,b.debug="boolean"!=typeof a.debug||a.debug,b.records=[],b.session={},b.loadTime=new Date,b.__initializeSession__(),b.__bindEvents__(),b},__bindEvents__:function(){var a=this;if(a.interactions===!0)for(var b=0;b<a.interactionEvents.length;b++)for(var c=a.interactionEvents[b],d=document.getElementsByClassName(a.interactionElement),e=0;e<d.length;e++)d[e].addEventListener(c,function(b){b.stopPropagation(),a.__addInteraction__(b,"interaction")});if(a.conversions===!0)for(var b=0;b<a.conversionEvents.length;b++)for(var c=a.conversionEvents[b],d=document.getElementsByClassName(a.conversionElement),e=0;e<d.length;e++)d[e].addEventListener(c,function(b){b.stopPropagation(),a.__addInteraction__(b,"conversion")});return window.onbeforeunload=function(b){a.__sendInteractions__()},a},__addInteraction__:function(a,b){var c=this,d={type:b,event:a.type,targetTag:a.target.nodeName,targetClasses:a.target.className,content:a.target.innerText,clientPosition:{x:a.clientX,y:a.clientY},screenPosition:{x:a.screenX,y:a.screenY},createdAt:new Date};return c.records.push(d),c.debug&&(c.__closeSession__(),console.log("Session:\n",c.session)),c},__initializeSession__:function(){var a=this;return a.session={loadTime:a.loadTime,unloadTime:new Date,language:window.navigator.language,platform:window.navigator.platform,port:window.location.port,clientStart:{name:window.navigator.appVersion,innerWidth:window.innerWidth,innerHeight:window.innerHeight,outerWidth:window.outerWidth,outerHeight:window.outerHeight},page:{location:window.location.pathname,href:window.location.href,origin:window.location.origin,title:document.title},endpoint:a.endpoint},a},__closeSession__:function(){var a=this;return a.session.unloadTime=new Date,a.session.interactions=a.records,a.session.clientEnd={name:window.navigator.appVersion,innerWidth:window.innerWidth,innerHeight:window.innerHeight,outerWidth:window.outerWidth,outerHeight:window.outerHeight},a},__sendInteractions__:function(){var a=this,b=new XMLHttpRequest;return a.__closeSession__(),b.open("POST",a.endpoint,a.async),b.setRequestHeader("Content-Type","application/json; charset=UTF-8"),b.send(JSON.stringify(a.session)),a}};
+        </script>
+        <script>
+
+            // Initialize Interactor
+            var interactor = new Interactor({
+                interactions            : true,
+                interactionElement      : "interaction",
+                interactionEvents       : ["mousedown", "touchstart"],
+                conversions             : true,
+                conversionElement       : "conversion",
+                conversionEvents        : ["mouseup", "touchend"],
+                endpoint                : '/usage/interactions',
+                async                   : true,
+                debug                   : true
+            });
+
+            var model       = {
+                interactions    : [
+                    {
+                        type            : "",
+                        event           : "",
+                        targetTag       : "",
+                        targetClasses   : "",
+                        content         : "",
+                        clientPosition  : {
+                            x               : 0,
+                            y               : 0
+                        },
+                        screenPosition  : {
+                            x               : 0,
+                            y               : 0
+                        },
+                        createdAt       : ""
+                    }
+                ],
+                conversions     : [
+                    {
+                        type            : "",
+                        event           : "",
+                        targetTag       : "",
+                        targetClasses   : "",
+                        content         : "",
+                        clientPosition  : {
+                            x               : 0,
+                            y               : 0
+                        },
+                        screenPosition  : {
+                            x               : 0,
+                            y               : 0
+                        },
+                        createdAt        : ""
+                    }
+                ],
+                loadTime        : "",
+                unloadTime      : "",
+                language        : "",
+                platform        : "",
+                port            : "",
+                clientStart     : {
+                    name            : "",
+                    innerWidth      : 0,
+                    innerHeight     : 0,
+                    outerWidth      : 0,
+                    outerHeight     : 0
+                },
+                clientEnd       : {
+                    name            : "",
+                    innerWidth      : 0,
+                    innerHeight     : 0,
+                    outerWidth      : 0,
+                    outerHeight     : 0
+                },
+                page            : {
+                    location        : "",
+                    href            : "",
+                    origin          : "",
+                    title           : ""
+                },
+                endpoint        : ""
+            };
+
+            // Bind Interaction & Conversion Classes to VM Update
+            var buttons = document.querySelectorAll(".interaction, .conversion");
+
+            // Mapping for Interactions & Conversions Array
+            var mapping = {
+                'interactions': {
+                    key: function (data) {
+                        console.log(data);
+                        return ko.utils.unwrapObservable(data.id);
+                    }
+                },
+                'conversions': {
+                    key: function (data) {
+                        console.log(data);
+                        return ko.utils.unwrapObservable(data.id);
+                    }
+                }
+            }
+
+            var viewmodel = ko.mapping.fromJS(model, mapping);
+            ko.applyBindings(viewmodel);
+
+            // Update View Model on Button Click
+            for(var i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener("click", function (e) {
+                    ko.mapping.fromJS(interactor.session, viewmodel);
+                    var history = document.querySelector(".history-data");
+                    history.style.display = "block";
+                });
+            }
+
+        </script>
     <body/>
-    <script type="application/javascript">
-    var Interactor=function(a){this.__init__(a)};Interactor.prototype={__init__:function(a){var b=this;return b.interactions="boolean"!=typeof a.interactions||a.interactions,b.interactionElement="string"==typeof a.interactionElement?a.interactionElement:"interaction",b.interactionEvents=Array.isArray(a.interactionEvents)===!0?a.interactionEvents:["mouseup","touchend"],b.conversions="boolean"!=typeof a.conversions||a.conversions,b.conversionElement="string"==typeof a.conversionElement?a.conversionElement:"conversion",b.conversionEvents=Array.isArray(a.conversionEvents)===!0?a.conversionEvents:["mouseup","touchend"],b.endpoint="string"==typeof a.endpoint?a.endpoint:"/interactions",b.async="boolean"!=typeof a.async||a.async,b.debug="boolean"!=typeof a.debug||a.debug,b.records=[],b.session={},b.loadTime=new Date,b.__initializeSession__(),b.__bindEvents__(),b},__bindEvents__:function(){var a=this;if(a.interactions===!0)for(var b=0;b<a.interactionEvents.length;b++)for(var c=a.interactionEvents[b],d=document.getElementsByClassName(a.interactionElement),e=0;e<d.length;e++)d[e].addEventListener(c,function(b){b.stopPropagation(),a.__addInteraction__(b,"interaction")});if(a.conversions===!0)for(var b=0;b<a.conversionEvents.length;b++)for(var c=a.conversionEvents[b],d=document.getElementsByClassName(a.conversionElement),e=0;e<d.length;e++)d[e].addEventListener(c,function(b){b.stopPropagation(),a.__addInteraction__(b,"conversion")});return window.onbeforeunload=function(b){a.__sendInteractions__()},a},__addInteraction__:function(a,b){var c=this,d={type:b,event:a.type,targetTag:a.target.nodeName,targetClasses:a.target.className,content:a.target.innerText,clientPosition:{x:a.clientX,y:a.clientY},screenPosition:{x:a.screenX,y:a.screenY},createdAt:new Date};return c.records.push(d),c.debug&&(c.__closeSession__(),console.log("Session:\n",c.session)),c},__initializeSession__:function(){var a=this;return a.session={loadTime:a.loadTime,unloadTime:new Date,language:window.navigator.language,platform:window.navigator.platform,port:window.location.port,clientStart:{name:window.navigator.appVersion,innerWidth:window.innerWidth,innerHeight:window.innerHeight,outerWidth:window.outerWidth,outerHeight:window.outerHeight},page:{location:window.location.pathname,href:window.location.href,origin:window.location.origin,title:document.title},endpoint:a.endpoint},a},__closeSession__:function(){var a=this;return a.session.unloadTime=new Date,a.session.interactions=a.records,a.session.clientEnd={name:window.navigator.appVersion,innerWidth:window.innerWidth,innerHeight:window.innerHeight,outerWidth:window.outerWidth,outerHeight:window.outerHeight},a},__sendInteractions__:function(){var a=this,b=new XMLHttpRequest;return a.__closeSession__(),b.open("POST",a.endpoint,a.async),b.setRequestHeader("Content-Type","application/json; charset=UTF-8"),b.send(JSON.stringify(a.session)),a}};
-    </script>
-    <script>
-        var interactor = new Interactor({
-            interactions            : true,
-            interactionElement      : "interaction",
-            interactionEvents       : ["mousedown", "touchstart"],
-            conversions             : true,
-            conversionElement       : "conversion",
-            conversionEvents        : ["mouseup", "touchend"],
-            endpoint                : '/usage/interactions',
-            async                   : true,
-            debug                   : true
-        });
-    </script>
 </html>
