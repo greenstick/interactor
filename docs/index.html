@@ -32,6 +32,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <title>Interactor Example</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <meta name="viewport" content="width=device-width, maximum-scale=1">
         <meta name="og:url" content="http://greenstick.github.io/interactor/">
         <meta name="og:title" content="Interactor Example">
         <meta name="og:description" content="An interactive example of the Interactor.js utility's data model.">
@@ -61,13 +62,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 line-height: 28px;
                 font-size: 24px;
             }
+            .session-actions-container {
+                float: left;
+                width: 644px;
+            }
             .session, .actions, .history {
                 margin-top: 20px;
             }
             .session {
                 float: left;
                 width: 480px;
-                height: 632px;
+                min-height: 632px;
                 margin-right: 20px;
             }
             .session-data {
@@ -140,6 +145,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             .history .conversion {
                 background-color: rgba(124, 244, 199, 0.7);
             }
+            @media only screen and (max-width: 1412px) {
+                #wrapper {
+                    width: 640px;
+                }
+            }
         </style>
 
     </head>
@@ -149,93 +159,95 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 <h1>Interactor Example</h1>
                 <h3>Open Your Browser Console to See An Example of The Data Being Collected by Interactor</h3>
             </header>
-            <div class="session">
-                <div class="title">
-                    Session
-                </div>
-                <div class="session-data">
-                    <div class="page.title">
-                        <span style="font-weight: bold;">Page Title:</span> <span data-bind="text: page.title"></span>
+            <div class="session-actions-container">
+                <div class="session">
+                    <div class="title">
+                        Session
                     </div>
-                    <div class="page.origin">
-                        <span style="font-weight: bold;">Page Origin:</span> <span data-bind="text: page.origin"></span>
-                    </div>
-                    <div class="page.location">
-                        <span style="font-weight: bold;">Page Location:</span> <span data-bind="text: page.location"></span>
-                    </div>
-                    <div class="page.href">
-                        <span style="font-weight: bold;">Page HREF:</span> <span data-bind="text: page.href"></span>
-                    </div>
-                    <div class="language">
-                        <span style="font-weight: bold;">Language:</span> <span data-bind="text: language"></span>
-                    </div>
-                    <div class="platform">
-                        <span style="font-weight: bold;">Platform:</span> <span data-bind="text: platform"></span>
-                    </div>
-                    <div class="clientstart.name">
-                        <span style="font-weight: bold;">Client Name on Load:</span> <span data-bind="text: clientStart.name"></span>
-                    </div>
-                    <div class="clientstart.innerWidth">
-                        <span style="font-weight: bold;">Client Inner Width on Load:</span> <span data-bind="text: clientStart.innerWidth"></span>
-                    </div>
-                    <div class="clientstart.innerHeight">
-                        <span style="font-weight: bold;">Client Inner Height on Load:</span> <span data-bind="text: clientStart.innerHeight"></span>
-                    </div>
-                    <div class="clientstart.outerWidth">
-                        <span style="font-weight: bold;">Client Outer Width on Load:</span> <span data-bind="text: clientStart.outerWidth"></span>
-                    </div>
-                    <div class="clientstart.outerHeight">
-                        <span style="font-weight: bold;">Client Outer Height on Load:</span> <span data-bind="text: clientStart.outerHeight"></span>
-                    </div>
-                    <div class="loadTime">
-                        <span style="font-weight: bold;">Load Time:</span> <span data-bind="text: loadTime"></span>
-                    </div>
+                    <div class="session-data">
+                        <div class="page.title">
+                            <span style="font-weight: bold;">Page Title:</span> <span data-bind="text: page.title"></span>
+                        </div>
+                        <div class="page.origin">
+                            <span style="font-weight: bold;">Page Origin:</span> <span data-bind="text: page.origin"></span>
+                        </div>
+                        <div class="page.location">
+                            <span style="font-weight: bold;">Page Location:</span> <span data-bind="text: page.location"></span>
+                        </div>
+                        <div class="page.href">
+                            <span style="font-weight: bold;">Page HREF:</span> <span data-bind="text: page.href"></span>
+                        </div>
+                        <div class="language">
+                            <span style="font-weight: bold;">Language:</span> <span data-bind="text: language"></span>
+                        </div>
+                        <div class="platform">
+                            <span style="font-weight: bold;">Platform:</span> <span data-bind="text: platform"></span>
+                        </div>
+                        <div class="clientstart.name">
+                            <span style="font-weight: bold;">Client Name on Load:</span> <span data-bind="text: clientStart.name"></span>
+                        </div>
+                        <div class="clientstart.innerWidth">
+                            <span style="font-weight: bold;">Client Inner Width on Load:</span> <span data-bind="text: clientStart.innerWidth"></span>
+                        </div>
+                        <div class="clientstart.innerHeight">
+                            <span style="font-weight: bold;">Client Inner Height on Load:</span> <span data-bind="text: clientStart.innerHeight"></span>
+                        </div>
+                        <div class="clientstart.outerWidth">
+                            <span style="font-weight: bold;">Client Outer Width on Load:</span> <span data-bind="text: clientStart.outerWidth"></span>
+                        </div>
+                        <div class="clientstart.outerHeight">
+                            <span style="font-weight: bold;">Client Outer Height on Load:</span> <span data-bind="text: clientStart.outerHeight"></span>
+                        </div>
+                        <div class="loadTime">
+                            <span style="font-weight: bold;">Load Time:</span> <span data-bind="text: loadTime"></span>
+                        </div>
 
-                    <div class="unloadTime">
-                        <span style="font-weight: bold;">Unload Time:</span> <span data-bind="text: unloadTime"></span>*
-                    </div>
-                    <div class="clientend.innerWidth">
-                        <span style="font-weight: bold;">Client Inner Width on Unload:</span> <span data-bind="text: clientEnd.innerWidth"></span>*
-                    </div>
-                    <div class="clientend.innerHeight">
-                        <span style="font-weight: bold;">Client Inner Height on Unload:</span> <span data-bind="text: clientEnd.innerHeight"></span>*
-                    </div>
-                    <div class="clientend.outerWidth">
-                        <span style="font-weight: bold;">Client Outer Width on Unload:</span> <span data-bind="text: clientEnd.outerWidth"></span>*
-                    </div>
-                    <div class="clientend.outerHeight">
-                        <span style="font-weight: bold;">Client Outer Height on Unload:</span> <span data-bind="text: clientEnd.outerHeight"></span>*
-                    </div>
-                    <h5>*Unload Session Data Simulated on Each Interaction</h5>
-                </div>
-            </div>
-            <div class="actions">
-                <div class="interactions">
-                    <div class="title">
-                        Interactions
-                    </div>
-                    <div class="interaction-buttons">
-                        <div class="interaction">Meow</div>
-                        <div class="interaction">Moo</div>
-                        <div class="interaction">Oink</div>
-                        <div class="interaction">Bark</div>
-                        <div class="interaction">Roar</div>
-                        <div class="interaction">Screech</div>
-                        <div class="interaction">Woof</div>
+                        <div class="unloadTime">
+                            <span style="font-weight: bold;">Unload Time:</span> <span data-bind="text: unloadTime"></span>*
+                        </div>
+                        <div class="clientend.innerWidth">
+                            <span style="font-weight: bold;">Client Inner Width on Unload:</span> <span data-bind="text: clientEnd.innerWidth"></span>*
+                        </div>
+                        <div class="clientend.innerHeight">
+                            <span style="font-weight: bold;">Client Inner Height on Unload:</span> <span data-bind="text: clientEnd.innerHeight"></span>*
+                        </div>
+                        <div class="clientend.outerWidth">
+                            <span style="font-weight: bold;">Client Outer Width on Unload:</span> <span data-bind="text: clientEnd.outerWidth"></span>*
+                        </div>
+                        <div class="clientend.outerHeight">
+                            <span style="font-weight: bold;">Client Outer Height on Unload:</span> <span data-bind="text: clientEnd.outerHeight"></span>*
+                        </div>
+                        <h5>*Unload Session Data Simulated on Each Interaction</h5>
                     </div>
                 </div>
-                <div class="conversions">
-                    <div class="title">
-                        Conversion
+                <div class="actions">
+                    <div class="interactions">
+                        <div class="title">
+                            Interactions
+                        </div>
+                        <div class="interaction-buttons">
+                            <div class="interaction">Meow</div>
+                            <div class="interaction">Moo</div>
+                            <div class="interaction">Oink</div>
+                            <div class="interaction">Bark</div>
+                            <div class="interaction">Roar</div>
+                            <div class="interaction">Screech</div>
+                            <div class="interaction">Woof</div>
+                        </div>
                     </div>
-                    <div class="conversion-buttons">
-                        <div class="conversion">Boogy</div>
-                        <div class="conversion">Cheer</div>
-                        <div class="conversion">Applaud</div>
-                        <div class="conversion">Dance</div>
-                        <div class="conversion">Celebrate</div>
-                        <div class="conversion">Hooray</div>
-                        <div class="conversion">Woot</div>
+                    <div class="conversions">
+                        <div class="title">
+                            Conversion
+                        </div>
+                        <div class="conversion-buttons">
+                            <div class="conversion">Boogy</div>
+                            <div class="conversion">Cheer</div>
+                            <div class="conversion">Applaud</div>
+                            <div class="conversion">Dance</div>
+                            <div class="conversion">Celebrate</div>
+                            <div class="conversion">Hooray</div>
+                            <div class="conversion">Woot</div>
+                        </div>
                     </div>
                 </div>
             </div>
