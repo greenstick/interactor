@@ -68,28 +68,24 @@ Interactor.prototype = {
         // Set Interaction Capture
         if (interactor.interactions === true) {
             for (var i = 0; i < interactor.interactionEvents.length; i++) {
-                var ev      = interactor.interactionEvents[i],
-                    targets = document.getElementsByClassName(interactor.interactionElement);
-                for (var j = 0; j < targets.length; j++) {
-                    targets[j].addEventListener(ev, function (e) {
-                        e.stopPropagation();
+                document.querySelector('body').addEventListener(interactor.interactionEvents[i], function (e) {
+                    e.stopPropagation();
+                    if (e.target.classList.value === interactor.interactionElement) {
                         interactor.__addInteraction__(e, "interaction");
-                    });
-                }
+                    }
+                });
             }   
         }
 
         // Set Conversion Capture
         if (interactor.conversions === true) {
             for (var i = 0; i < interactor.conversionEvents.length; i++) {
-                var ev      = interactor.conversionEvents[i],
-                    targets = document.getElementsByClassName(interactor.conversionElement);
-                for (var j = 0; j < targets.length; j++) {
-                    targets[j].addEventListener(ev, function (e) {
-                        e.stopPropagation();
+                document.querySelector('body').addEventListener(interactor.conversionEvents[i], function (e) {
+                    e.stopPropagation();
+                    if (e.target.classList.value === interactor.conversionElement) {
                         interactor.__addInteraction__(e, "conversion");
-                    });
-                }
+                    }
+                });
             }   
         }
 
