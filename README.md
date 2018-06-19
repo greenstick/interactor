@@ -1,4 +1,5 @@
 # Interactor.js
+
 A simple, light-weight (< 5KB minified), no dependency, front-end website interaction tracker. 
 
 Collects usage data and submits it to a user-defined server endpoint on the beforeunload event. 
@@ -10,6 +11,8 @@ This data can help you analyze:
 * Engagement levels on a per-page and site-wide basis
 * What platforms, language settings, and browser dimensions your users have
 * Bounce rates, page and site bottle-necks, impressions, and conversions
+
+[![DOI](https://zenodo.org/badge/40263917.svg)](https://zenodo.org/badge/latestdoi/40263917)
 
 ## Documentation
 Documentation is currently being written. There's a working (front-end) [example of Interactor](http://greenstick.github.io/interactor/). To explore it, open up your browsers' console and click on the interaction and conversion buttons.
