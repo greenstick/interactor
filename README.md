@@ -1,10 +1,10 @@
 # Interactor.js
 
-A simple, light-weight (< 5KB minified), no dependency, front-end website interaction tracker. 
+A simple, light-weight (< 5KB minified), no dependency, front-end website interaction tracker for personal websites. 
 
-Collects usage data and submits it to a user-defined server endpoint on the beforeunload event. 
+Collects usage data and sendd it to a user-defined server endpoint on the beforeunload event.
 
-Great for creating a database to drive analytics, inform A/B testing, and guide other site optimization decisions.
+Great for creating a database to drive analytics, inform A/B testing, monitor engagement, and guide site optimization decisions.
 
 This data can help you analyze:
 * How your users navigate your website
@@ -120,8 +120,3 @@ Example:
 		async                   : true,
 		debug                   : true
 	}
-
-## Contributing
-Contributions are welcome!
-
-Next up: addition of Web Socket mode. 
