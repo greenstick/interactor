@@ -120,3 +120,6 @@ Example:
 		async                   : true,
 		debug                   : true
 	}
+
+## Can I Buy You a Coffee?
+Sure! I'm a grad student. [Coffee](https://www.buymeacoffee.com/O1TrCFSXa) very much appreciated!
