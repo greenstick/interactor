@@ -1,6 +1,6 @@
 # Interactor.js
 
-A simple, light-weight (< 5KB minified), no dependency, front-end website interaction tracker for personal websites. 
+A simple, light-weight (< 5KB minified), no dependency, front-end website interaction tracker for personal websites and web projects. 
 
 Collects usage data and send it to a user-defined server endpoint on the beforeunload event.
 
@@ -79,9 +79,9 @@ Include the script in your HTML and invoke it.
 
 To track a users interactions with an element, simply add the 'interaction' CSS class to the element.
 
-Have a conversion point on your page? You can add that too, just add the 'conversion' CSS class to your conversion's HTML element. 
+Have a conversion point on your page? You can add that too, just add the `.conversion` CSS class to your conversion's HTML element. 
 
-Want to track a user's interactions and/or conversions with different element classes already on your page? Create multiple instances and allow each to target a specific element to track. No update to your HTML neccessary!
+Want to track a user's interactions and/or conversions with different element classes already on your page? Create multiple instances and allow each to target a specific element to track. No update to your HTML neccessary.
 
 Example:
 
