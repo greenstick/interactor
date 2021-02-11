@@ -77,7 +77,7 @@ Include the script in your HTML and invoke it.
 		</body>
 	</html>
 
-To track a users interactions with an element, simply add the 'interaction' CSS class to the element.
+To track a users interactions with an element, simply add the `.interaction` CSS class to the element.
 
 Have a conversion point on your page? You can add that too, just add the `.conversion` CSS class to your conversion's HTML element. 
 
