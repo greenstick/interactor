@@ -122,4 +122,4 @@ Example:
 	}
 
 ## Can I Buy You a Coffee?
-Sure! I'm a grad student. [Coffee](https://www.buymeacoffee.com/O1TrCFSXa) very much appreciated!
+Sure! I'm a grad student. [Coffee](https://www.buymeacoffee.com/O1TrCFSXa) is always very much appreciated! Thanks!
