@@ -2,7 +2,7 @@
 
 A simple, light-weight (< 5KB minified), no dependency, front-end website interaction tracker for personal websites. 
 
-Collects usage data and sendd it to a user-defined server endpoint on the beforeunload event.
+Collects usage data and send it to a user-defined server endpoint on the beforeunload event.
 
 Great for creating a database to drive analytics, inform A/B testing, monitor engagement, and guide site optimization decisions.
 
