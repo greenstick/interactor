@@ -70,7 +70,7 @@ Interactor.prototype = {
             for (var i = 0; i < interactor.interactionEvents.length; i++) {
                 document.querySelector('body').addEventListener(interactor.interactionEvents[i], function (e) {
                     e.stopPropagation();
-                    if (e.target.classList.value === interactor.interactionElement) {
+                    if (e.target.classList.contains(interactor.interactionElement)) {
                         interactor.__addInteraction__(e, "interaction");
                     }
                 });
@@ -82,7 +82,7 @@ Interactor.prototype = {
             for (var i = 0; i < interactor.conversionEvents.length; i++) {
                 document.querySelector('body').addEventListener(interactor.conversionEvents[i], function (e) {
                     e.stopPropagation();
-                    if (e.target.classList.value === interactor.conversionElement) {
+                    if (e.target.classList.contains(interactor.conversionElement)) {
                         interactor.__addInteraction__(e, "conversion");
                     }
                 });
